@@ -9,14 +9,14 @@ import {
 
 class App extends React.Component {
   render() {
-    return(
+    return (
       <Router>
         <Switch>
           <Route exact path="/">
             <SingIn></SingIn>
           </Route>
           <Route path="/home">
-            <Home></Home>
+            <Home idUser={"Hugo"}></Home>
           </Route>
         </Switch>
       </Router>
