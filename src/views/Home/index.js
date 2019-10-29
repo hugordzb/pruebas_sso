@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import AppMenu from './AppMenu'
+import { withRouter } from 'react-router-dom'
+import AppMenu from '../../components/AppMenu'
 
 const apps = [
     {
@@ -76,4 +77,4 @@ Home.prototypes = {
     userId : PropTypes.string.isRequired,
 }
 
-export default Home
+export default withRouter(Home)

@@ -5,7 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-
+import PropTypes from 'prop-types'
 
 const styles = theme => ({
     root: {
@@ -14,25 +14,25 @@ const styles = theme => ({
   });
 
 class Application extends Component {
-
     render() {
+        const { app } = this.props
         const { classes } = this.props;
         return(
             <Card className = { classes.root } >
                 <CardActionArea>
                     <CardMedia
                         component="img"
-                        image={this.props.app.img.url}
-                        title={this.props.app.img.title}
-                        alt={this.props.app.img.alt}
+                        image={app.img.url}
+                        title={app.img.title}
+                        alt={app.img.alt}
                         height="140"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
-                            {this.props.app.name}
+                            {app.name}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                            {this.props.app.description}
+                            {app.description}
                         </Typography>
                     </CardContent>
                 </CardActionArea>
@@ -40,6 +40,18 @@ class Application extends Component {
         );
     }
     
+}
+
+Application.prototypes = {
+    app : PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        img:  PropTypes.shape({
+            url: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            alt: PropTypes.string.isRequired,
+        })
+    }),
 }
 
 export default withStyles(styles)(Application)

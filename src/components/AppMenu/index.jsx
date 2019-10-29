@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Aplicacion from './Application'
+import Aplicacion from '../Application'
 import { Grid } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 
@@ -28,7 +28,7 @@ class AppMenu extends Component {
         const { classes } = this.props;
         return (
             <Grid container className={classes.root} spacing={2}>
-                <Grid item xs={12}>
+                <Grid item md={12}>
                     <Grid container justify="center" spacing={4}>
                     {this.props.apps.map((app, i) => <Aplicacion key={i} app={app}></Aplicacion>)}
                     </Grid>
