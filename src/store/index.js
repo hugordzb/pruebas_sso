@@ -1,7 +1,17 @@
 import { createStore } from 'redux'
 
-const reducers = state => state
+import { authenticate } from '../reducers'
 
-export const store = createStore( reducers, 
-    window.__REDUX_DEVTOOLS_EXTENSION__ && 
-    window.__REDUX_DEVTOOLS_EXTENSION__())
+const initialState = {
+  user: {
+    userId: '',
+    token: '',
+    apps: []
+  }
+}
+
+
+
+export const store = createStore(authenticate, initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ &&
+  window.__REDUX_DEVTOOLS_EXTENSION__())

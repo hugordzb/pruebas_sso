@@ -4,8 +4,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from "react-router-dom";
-import Login from './components/Login';
+} from "react-router-dom"
+import Login from './views/Login'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 class App extends React.Component {
