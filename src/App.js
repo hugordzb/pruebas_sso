@@ -1,23 +1,21 @@
 import React from 'react'
-import SingIn from './components/SingIn'
-import Home from './components/Home'
+import Home from './views/Home'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from "react-router-dom";
+} from "react-router-dom"
+import Login from './views/Login'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 class App extends React.Component {
   render() {
     return (
       <Router>
+        <CssBaseline />
         <Switch>
-          <Route exact path="/">
-            <SingIn></SingIn>
-          </Route>
-          <Route path="/home">
-            <Home idUser={"Hugo"}></Home>
-          </Route>
+          <Route path="/home" component={Home}></Route>
+          <Route path="/" component={Login}></Route>
         </Switch>
       </Router>
     )

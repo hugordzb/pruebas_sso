@@ -8,8 +8,13 @@
     "@material-ui/icons": "^4.5.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-form": "^4.0.0-alpha.14",
+    "react-forms": "^1.0.0-rc6",
+    "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "redux": "^4.0.4",
+    "redux-form": "^8.2.6"
   },
   "scripts": {
     "start": "react-scripts start",
