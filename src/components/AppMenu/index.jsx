@@ -14,13 +14,6 @@ const styles = () => ({
 });
 
 class AppMenu extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-
-    }
-  }
-
   renderApps = () => {
     const { classes } = this.props;
     return (
