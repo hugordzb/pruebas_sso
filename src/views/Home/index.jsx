@@ -9,8 +9,7 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        <h1>Bienvenido</h1>
-        <h2>{this.props.userId}</h2>
+        <h1>Bienvenido {this.props.userId}</h1>
         <AppMenu apps={this.props.apps}></AppMenu>
       </>
     )
@@ -22,6 +21,7 @@ Home.prototypes = {
 }
 
 const mapStateToProps = state => ({
+  userId: state.user.userId,
   apps: state.user.apps
 })
 
