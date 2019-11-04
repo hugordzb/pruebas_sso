@@ -48,8 +48,7 @@ class Login extends Component {
       response => response.json()
     ).then(
       data => {
-        let { Bandera } = data;
-        if (Bandera === true) {
+        if (data) {
           this.props.authenticate(data);
           this.props.history.push('/home');
         }
