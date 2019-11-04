@@ -13,6 +13,7 @@ import { authenticate } from '../../actions';
 import { loginService } from '../../services/Login';
 import { style } from '../../styles/Login';
 
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -35,8 +36,8 @@ class Login extends Component {
 
     let credential = `${user}:${password}`;
 
-    let headers = { Credencial: btoa(credential) };
-
+    let headers = { credential: btoa(credential) };
+    
     fetch(
       loginService,
       {

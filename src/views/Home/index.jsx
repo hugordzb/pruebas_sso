@@ -23,7 +23,7 @@ Home.prototypes = {
 const mapStateToProps = state => ({
   userId: state.user.userId,
   apps: state.user.apps
-})
+});
 
 const HomeConnected = connect(mapStateToProps, null)(Home)
 

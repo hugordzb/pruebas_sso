@@ -6,9 +6,10 @@ export const authenticate = (state={}, action) => {
       return {
         ...state,
         user: {
-          userId: action.payLoad.Usuario,
-          token: action.payLoad.Token,
-          apps: action.payLoad.Apps
+          userId: action.payLoad.userId,
+          isAuthenticate: (action.payLoad.Usuario && action.payLoad.Token) ? true : false,
+          token: action.payLoad.token,
+          apps: action.payLoad.apps
         }
       }
     default: 
