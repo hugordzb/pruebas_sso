@@ -11,10 +11,16 @@ class Home extends React.Component {
   render() {
     return (
       <TemplatePage>
-        <Typography variant="h6">
+        <Typography variant="h5">
           Bienvenido {this.props.userId}
         </Typography>
-        <SystemMenu apps={this.props.apps}></SystemMenu>
+        {
+          this.props.apps.length > 0 ? <SystemMenu apps={this.props.apps}></SystemMenu> :
+            <Typography variant="h6">
+              No se tienen sistemas registrados en esta cuenta
+        </Typography>
+        }
+
       </TemplatePage >
     )
   }
