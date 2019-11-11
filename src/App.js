@@ -1,9 +1,6 @@
 import React from 'react';
 import Home from './views/Home';
-import {
-  Switch,
-  Route,
-} from "react-router-dom";
+import {Switch, Route} from "react-router-dom";
 import Greeting from './views/Greeting';
 import Login from './views/Login';
 import Whoops404 from './views/Whoops404';
