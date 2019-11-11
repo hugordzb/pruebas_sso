@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Aplicacion from './Application'
+import System from './System'
 import { Grid } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = () => ({
+const style = () => ({
   root: {
     flexGrow: 1,
   },
@@ -13,15 +13,13 @@ const styles = () => ({
   },
 });
 
-class AppMenu extends Component {
+class SystemMenu extends Component {
   renderApps = () => {
     const { classes } = this.props;
     return (
-      <Grid container className={classes.root} spacing={2}>
+      <Grid container className={classes.root} spacing={3}>
         <Grid item md={12}>
-          <Grid container justify="center" spacing={4}>
-            {this.props.apps.map((app, i) => <Aplicacion key={i} app={app}></Aplicacion>)}
-          </Grid>
+            {this.props.apps.map((app, i) => <System key={i} app={app}></System>)}
         </Grid>
       </Grid>
     )
@@ -36,4 +34,4 @@ class AppMenu extends Component {
   }
 }
 
-export default withStyles(styles)(AppMenu)
+export default withStyles(style)(SystemMenu)

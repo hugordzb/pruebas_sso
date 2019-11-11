@@ -1,5 +1,5 @@
 {
-  "homepage": "http://localhost/login",
+  "homepage": "http://localhost/sso",
   "name": "sso_app",
   "version": "0.1.0",
   "private": true,

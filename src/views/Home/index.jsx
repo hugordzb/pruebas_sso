@@ -1,17 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
-import AppMenu from '../../components/AppMenu'
+import SystemMenu from '../../components/SystemMenu'
 
 import { connect } from 'react-redux'
+import TemplatePage from '../../components/TemplatePage'
+import { Typography } from '@material-ui/core'
 
 class Home extends React.Component {
   render() {
     return (
-      <>
-        <h1>Bienvenido {this.props.userId}</h1>
-        <AppMenu apps={this.props.apps}></AppMenu>
-      </>
+      <TemplatePage>
+        <Typography variant="h6">
+          Bienvenido {this.props.userId}
+        </Typography>
+        <SystemMenu apps={this.props.apps}></SystemMenu>
+      </TemplatePage >
     )
   }
 }
@@ -21,8 +25,8 @@ Home.prototypes = {
 }
 
 const mapStateToProps = state => ({
-  userId: state.user.userId,
-  apps: state.user.apps
+  userId: state.authenticate.user.userId,
+  apps: state.authenticate.user.apps
 });
 
 const HomeConnected = connect(mapStateToProps, null)(Home)

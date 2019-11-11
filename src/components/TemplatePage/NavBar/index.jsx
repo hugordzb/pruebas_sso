@@ -4,20 +4,19 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import AccountBox from '@material-ui/icons/AccountBox';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
-import { style } from '../../styles/NavBar';
+import { style } from '../../../styles/NavBar';
 import { Button, IconButton } from '@material-ui/core';
-
-import { Redirect } from 'react-router-dom';
-
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
-
+import UserSessionMenu from './UserSessionMenu';
 
 class NavBar extends Component {
+  
   redirectToLogin = () => {
-    return <Redirect to='/login' />
+    this.props.history.push('/login');
   }
+
   render() {
     const { classes } = this.props;
     return (
@@ -37,9 +36,8 @@ class NavBar extends Component {
               <AccountBox />
               {"Iniciar sesión"}
             </Button> :
-            <Button className={classes.sessionButton}>
-              <AccountCircle />
-            </Button>}
+            <UserSessionMenu userId={this.props.userId}/>
+          }
         </Toolbar>
       </AppBar>
     );
@@ -47,10 +45,10 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  userId: state.user.userId,
-  isAuthenticated: state.user.isAuthenticated,
+  userId: state.authenticate.user.userId,
+  isAuthenticated: state.authenticate.user.isAuthenticated,
 });
 
 const connectedNavBar = connect(mapStateToProps, null)(NavBar);
 
-export default withStyles(style)(connectedNavBar)
+export default withRouter(withStyles(style)(connectedNavBar))

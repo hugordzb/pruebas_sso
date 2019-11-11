@@ -1,40 +1,47 @@
-import React from 'react'
-import Home from './views/Home'
+import React from 'react';
+import Home from './views/Home';
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-} from "react-router-dom"
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Greeting from './views/Greeting'
-import Login from './views/Login'
-import NavBar from './components/NavBar'
+} from "react-router-dom";
+import Greeting from './views/Greeting';
+import Login from './views/Login';
+import Whoops404 from './views/Whoops404';
+import PrivateRoute from './components/PrivateRoute';
+
+import { connect } from 'react-redux';
+import { refresh } from './redux/actions/';
+import PublicRoute from './components/PublicRoute';
 
 class App extends React.Component {
+
+  componentDidMount() {
+    if (!this.props.isAuthenticated) {
+      let token = localStorage.getItem("token");
+      if(token && true){
+        this.props.refresh();
+      }
+    }
+  }
+
   render() {
     return (
-      <Router>
-        <CssBaseline />
-        <header>
-          <NavBar />
-        </header>
-
-        <main>
-          <Route exact path="/login" component={Login}></Route>
-          <Route exact path="/home" component={Home}></Route>
-          <Route exact path="/" component={Greeting}></Route>
-
-          <Switch>
-
-          </Switch>
-        </main>
-
-        <footer>
-
-        </footer>
-      </Router>
+      <Switch>
+        <PublicRoute exact path="/" restricted={true} component={Greeting}></PublicRoute>
+        <PublicRoute restricted={true} path="/login" component={Login}></PublicRoute>
+        <PrivateRoute path="/home" component={Home}></PrivateRoute>
+        <Route component={Whoops404}></Route>
+      </Switch>
     )
   }
 }
 
-export default App
+const mapStateToProps = state => ({
+  isAuthenticated: (state.authenticate.user.userId && state.authenticate.user.token) ? true : false
+});
+
+const mapDispatchToProps = dispatch => ({
+  refresh: () => dispatch(refresh())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -9,8 +9,7 @@ import {
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-import { authenticate } from '../../actions';
-import { loginService } from '../../services/Login';
+import { authenticate } from '../../redux/actions';
 import { style } from '../../styles/Login';
 
 
@@ -39,7 +38,7 @@ class Login extends Component {
     let headers = { credential: btoa(credential) };
     
     fetch(
-      loginService,
+      global.config.current.SERVERS.AUTH_SERVER,
       {
         method: 'POST',
         headers: headers,
@@ -122,9 +121,8 @@ class Login extends Component {
   }
 }
 
-//const mapStateToProps = () => null
 const mapDispatchToProps = dispatch => ({
-  authenticate: value => dispatch(authenticate(value))
+  authenticate: userData => dispatch(authenticate(userData))
 })
 
 const loginConnected = connect(null, mapDispatchToProps)(Login)
