@@ -12,13 +12,14 @@ import { connect } from 'react-redux'
 import UserSessionMenu from './UserSessionMenu';
 
 class NavBar extends Component {
-  
+
   redirectToLogin = () => {
     this.props.history.push('/login');
   }
 
   render() {
     const { classes } = this.props;
+    const { title, displayName, department, isAuthenticated } = this.props;
     return (
       <AppBar className={classes.navBar}>
         <Toolbar>
@@ -28,7 +29,7 @@ class NavBar extends Component {
           <Typography variant="h6" className={classes.title}>
             {"Aplicaciones TRUPER"}
           </Typography>
-          {!this.props.isAuthenticated ?
+          {!isAuthenticated ?
             <Button
               className={classes.loginButton}
               onClick={this.redirectToLogin}
@@ -36,7 +37,7 @@ class NavBar extends Component {
               <AccountBox />
               {"Iniciar sesión"}
             </Button> :
-            <UserSessionMenu userId={this.props.displayName.replace(/"/g, "")}/>
+            <UserSessionMenu title={title.replace(/"/g, "")} displayName={displayName} department={department} />
           }
         </Toolbar>
       </AppBar>
@@ -45,7 +46,9 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => ({
+  title: state.authenticate.user.title,
   displayName: state.authenticate.user.displayName,
+  department: state.authenticate.user.department,
   isAuthenticated: state.authenticate.user.isAuthenticated,
 });
 

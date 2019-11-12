@@ -3,8 +3,6 @@ import React from 'react';
 import Fade from '@material-ui/core/Fade';
 import { IconButton, Card, CardContent, Typography, Avatar, CardActions, Button, Popover } from '@material-ui/core';
 
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-
 import { connect } from 'react-redux';
 import { signOut } from '../../../../redux/actions';
 
@@ -29,7 +27,7 @@ function UserSessionMenu(props) {
     <div>
 
       <IconButton variant="contained" onClick={handleClick}>
-        <AccountCircleIcon />
+        <Avatar>{props.displayName.charAt(0)}</Avatar>
       </IconButton>
       <Popover
         open={open}
@@ -51,16 +49,15 @@ function UserSessionMenu(props) {
           TransitionComponent={Fade}
         >
           <CardContent>
-            <Avatar>H</Avatar>
             <Typography variant="h5" component="h2">
-              Hugo Daniel Rodriguez Bautista
-        </Typography>
+              {props.displayName}
+            </Typography>
             <Typography color="textSecondary">
-              Desarrollador web Jr
-        </Typography>
+              {props.title}
+            </Typography>
             <Typography variant="body2" component="p">
-              Sistemas
-        </Typography>
+              {props.department}
+            </Typography>
           </CardContent>
           <CardActions>
             <Button size="small" onClick={handleSignOut}>Cerrar sesión</Button>
