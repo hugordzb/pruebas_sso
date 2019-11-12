@@ -13,7 +13,8 @@ const styles = theme => ({
 class System extends Component {
 
   redirectApp = () => {
-    window.open(`http://localhost:3001?userId=${this.props.userId}&token=${this.props.token}`, '_blank');
+    let page = 'http://localhost:3001';
+    window.open(`${page}?token=${this.props.userData.token}`, '_blank');
   }
 
   render() {
@@ -23,7 +24,6 @@ class System extends Component {
       <Button onClick={this.redirectApp}>
         {(app === "S004") ? "Recertificación" : app}
       </Button>
-
     );
   }
 
