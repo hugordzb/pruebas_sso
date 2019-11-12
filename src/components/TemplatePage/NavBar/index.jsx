@@ -49,7 +49,7 @@ const mapStateToProps = state => ({
   title: state.authenticate.user.title,
   displayName: state.authenticate.user.displayName,
   department: state.authenticate.user.department,
-  isAuthenticated: state.authenticate.user.isAuthenticated,
+  isAuthenticated: state.authenticate.isAuthenticated,
 });
 
 const connectedNavBar = connect(mapStateToProps, null)(NavBar);

@@ -4,19 +4,21 @@ const ACTIONS = {
   SIGNOUT: "SIGNOUT"
 }
 
-const initialState = {
-  user: {
-    userId: '',
-    displayName:'',
-    title: '',
-    department: '',
-    isAuthenticated: false,
-    token: '',
-    apps: [],
+const apiInitState = () => {
+  let userData = {};
+  let userJson = localStorage.getItem("userData");
+
+  if(userJson){
+    userData = {
+      user: JSON.parse(userJson),
+      isAuthenticated: true
+    }
   }
+  
+  return userData;
 }
 
-export const authenticate = (state = initialState, action) => {
+export const authenticate = (state = apiInitState(), action) => {
   switch (action.type) {
     case ACTIONS.AUTHENTICATE:
       return {

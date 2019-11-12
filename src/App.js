@@ -5,7 +5,6 @@ import Greeting from './views/Greeting';
 import Login from './views/Login';
 import Whoops404 from './views/Whoops404';
 import PrivateRoute from './components/PrivateRoute';
-
 import { connect } from 'react-redux';
 import { refresh } from './redux/actions/';
 import PublicRoute from './components/PublicRoute';
@@ -16,6 +15,7 @@ class App extends React.Component {
     if (!this.props.isAuthenticated) {
       let token = localStorage.getItem("token");
       if(token && true){
+        console.log('Ss');
         this.props.refresh();
       }
     }
@@ -34,7 +34,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: (state.authenticate.user.userId && state.authenticate.user.token) ? true : false
+  isAuthenticated: state.authenticate.isAuthenticated
 });
 
 const mapDispatchToProps = dispatch => ({

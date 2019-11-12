@@ -5,12 +5,7 @@ const ACTIONS = {
 }
 
 export const authenticate = userData => {
-  localStorage.setItem("userId", userData.userId);
-  localStorage.setItem("displayName", JSON.stringify(userData.displayName));
-  localStorage.setItem("title", JSON.stringify(userData.title));
-  localStorage.setItem("department", JSON.stringify(userData.department));
-  localStorage.setItem("token", userData.token);
-  localStorage.setItem("apps", JSON.stringify(userData.apps));
+  localStorage.setItem('userData', JSON.stringify(userData))
 
   return {
     type: ACTIONS.AUTHENTICATE,
@@ -19,20 +14,16 @@ export const authenticate = userData => {
 };
 
 export const refresh = () => {
-  var userData = {
-    userId: localStorage.getItem("userId"),
-    displayName: localStorage.getItem("displayName"),
-    title: localStorage.getItem("title"),
-    department: localStorage.getItem("department"),
-    token: localStorage.getItem("token"),
-    apps: JSON.parse(localStorage.getItem("apps"))
+  let userData = {};
+  let userJson = localStorage.getItem("userData");
+  if(userJson){
+    userData = JSON.parse(userJson);
   }
 
   return {
     type: ACTIONS.REFRESH,
     userData
   }
-
 }
 
 export const signOut = () => {
