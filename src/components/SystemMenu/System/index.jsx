@@ -30,8 +30,8 @@ class System extends Component {
 }
 
 const mapStateToProps = state => ({
-  userId: state.authenticate.user.userId,
-  token: state.authenticate.user.token
+  userData: state.authenticate.userData,
+  isAuthenticated: state.authenticate.isAuthenticated,
 });
 
 const connectedSystem = connect(mapStateToProps, null)(System);

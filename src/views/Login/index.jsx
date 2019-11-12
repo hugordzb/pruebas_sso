@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {Avatar, Button, Checkbox, Container,
+import {
+  Avatar, Button, Checkbox, Container,
   FormControlLabel, TextField, CircularProgress,
   Typography, withStyles
 } from '@material-ui/core';
@@ -15,14 +16,14 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: "",
+      userId: "",
       isLoading: false,
       password: "",
     };
   }
 
-  hangleChangeUser = event => {
-    this.setState({ user: event.target.value });
+  hangleChangeUserId = event => {
+    this.setState({ userId: event.target.value });
   }
 
   hangleChangePassword = event => {
@@ -31,12 +32,12 @@ class Login extends Component {
 
   handleSubmit = () => {
     this.setState({ isLoading: true });
-    const { user, password } = this.state;
+    const { userId, password } = this.state;
 
-    new SSOServices(btoa(`${user}:${password}`), true).login((response => {
+    new SSOServices(btoa(`${userId}:${password}`), true).login((response => {
       this.props.authenticate(response.data);
-      this.props.history.push('/home');
       this.setState({ isLoading: false });
+      this.props.history.push('/home');
     }), (responseError => {
       console.log(responseError);
       this.setState({ isLoading: false });
@@ -61,12 +62,12 @@ class Login extends Component {
                 margin="normal"
                 required
                 fullWidth
-                id="user"
+                id="userId"
                 label="Usuario"
-                name="user"
+                name="userId"
                 autoFocus
-                value={this.state.user}
-                onChange={this.hangleChangeUser}
+                value={this.state.userId}
+                onChange={this.hangleChangeUserId}
               />
               <TextField
                 variant="outlined"

@@ -1,4 +1,4 @@
-const ACTIONS = {
+export const ACTIONS = {
   AUTHENTICATE: "AUTHENTICATE",
   REFRESH: "REFRESH",
   SIGNOUT: "SIGNOUT"
@@ -16,10 +16,10 @@ export const authenticate = userData => {
 export const refresh = () => {
   let userData = {};
   let userJson = localStorage.getItem("userData");
-  if(userJson){
+  if (userJson) {
     userData = JSON.parse(userJson);
-  }
 
+  }
   return {
     type: ACTIONS.REFRESH,
     userData
@@ -28,13 +28,14 @@ export const refresh = () => {
 
 export const signOut = () => {
   localStorage.clear();
-  
+
   var userData = {
     userId: "",
+    token: "",
+    department: "",
+    name: "",
     displayName: "",
     title: "",
-    department: "",
-    token: "",
     apps: []
   }
 

@@ -19,7 +19,7 @@ class NavBar extends Component {
 
   render() {
     const { classes } = this.props;
-    const { title, displayName, department, isAuthenticated } = this.props;
+    const { isAuthenticated, userData } = this.props;
     return (
       <AppBar className={classes.navBar}>
         <Toolbar>
@@ -37,7 +37,7 @@ class NavBar extends Component {
               <AccountBox />
               {"Iniciar sesión"}
             </Button> :
-            <UserSessionMenu title={title.replace(/"/g, "")} displayName={displayName} department={department} />
+            <UserSessionMenu userData={userData} />
           }
         </Toolbar>
       </AppBar>
@@ -46,9 +46,7 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  title: state.authenticate.user.title,
-  displayName: state.authenticate.user.displayName,
-  department: state.authenticate.user.department,
+  userData: state.authenticate.userData,
   isAuthenticated: state.authenticate.isAuthenticated,
 });
 

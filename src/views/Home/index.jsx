@@ -9,14 +9,15 @@ import { Typography } from '@material-ui/core'
 
 class Home extends React.Component {
   render() {
+    const { userData } = this.props;
     return (
       <TemplatePage>
         <Typography variant="h5">
-          Bienvenido {this.props.userId}
+          Bienvenido {userData.userId}
         </Typography>
         {
-          this.props.apps.length > 0 ?
-            <SystemMenu apps={this.props.apps}></SystemMenu> :
+          userData.apps.length > 0 ?
+            <SystemMenu apps={userData.apps}></SystemMenu> :
             <Typography variant="h6">No se tienen sistemas registrados en esta cuenta</Typography>
         }
 
@@ -30,10 +31,10 @@ Home.prototypes = {
 }
 
 const mapStateToProps = state => ({
-  userId: state.authenticate.user.userId,
-  apps: state.authenticate.user.apps
+  userData: state.authenticate.userData,
+  isAuthenticated: state.authenticate.isAuthenticated,
 });
 
-const HomeConnected = connect(mapStateToProps, null)(Home)
+const HomeConnected = connect(mapStateToProps, null)(Home);
 
 export default withRouter(HomeConnected)

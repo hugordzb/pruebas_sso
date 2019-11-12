@@ -27,7 +27,7 @@ function UserSessionMenu(props) {
     <div>
 
       <IconButton variant="contained" onClick={handleClick}>
-        <Avatar>{props.displayName.charAt(0)}</Avatar>
+        <Avatar>{props.userData.displayName.charAt(0)}</Avatar>
       </IconButton>
       <Popover
         open={open}
@@ -50,13 +50,13 @@ function UserSessionMenu(props) {
         >
           <CardContent>
             <Typography variant="h5" component="h2">
-              {props.displayName}
+              {props.userData.displayName}
             </Typography>
             <Typography color="textSecondary">
-              {props.title}
+              {props.userData.title}
             </Typography>
             <Typography variant="body2" component="p">
-              {props.department}
+              {props.userData.department}
             </Typography>
           </CardContent>
           <CardActions>

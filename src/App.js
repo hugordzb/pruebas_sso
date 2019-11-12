@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './views/Home';
-import {Switch, Route} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Greeting from './views/Greeting';
 import Login from './views/Login';
 import Whoops404 from './views/Whoops404';
@@ -12,12 +12,9 @@ import PublicRoute from './components/PublicRoute';
 class App extends React.Component {
 
   componentDidMount() {
-    if (!this.props.isAuthenticated) {
-      let token = localStorage.getItem("token");
-      if(token && true){
-        console.log('Ss');
-        this.props.refresh();
-      }
+    let { isAuthenticated } = this.props;
+    if (!isAuthenticated) {
+      this.props.refresh();
     }
   }
 
@@ -34,7 +31,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.authenticate.isAuthenticated
+  userData: state.authenticate.userData,
+  isAuthenticated: state.authenticate.isAuthenticated,
 });
 
 const mapDispatchToProps = dispatch => ({

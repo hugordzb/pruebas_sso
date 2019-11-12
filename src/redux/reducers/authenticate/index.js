@@ -4,60 +4,46 @@ const ACTIONS = {
   SIGNOUT: "SIGNOUT"
 }
 
-const apiInitState = () => {
-  let userData = {};
+const initialState = () => {
+  let state = {};
   let userJson = localStorage.getItem("userData");
 
-  if(userJson){
-    userData = {
-      user: JSON.parse(userJson),
-      isAuthenticated: true
+  if (userJson) {
+    let userData = JSON.parse(userJson);
+    let isAuthenticated = (userData.userId && userData.token) ? true : false;
+    state = {
+      userData,
+      isAuthenticated
     }
   }
-  
-  return userData;
+
+  return state;
 }
 
-export const authenticate = (state = apiInitState(), action) => {
+export const authenticate = (state = initialState(), action) => {
   switch (action.type) {
     case ACTIONS.AUTHENTICATE:
       return {
         ...state,
-        user: {
-          userId: action.userData.userId,
-          displayName: action.userData.displayName,
-          title: action.userData.title,
-          department: action.userData.department,
-          isAuthenticated: (action.userData.userId && action.userData.token) ? true : false,
-          token: action.userData.token,
-          apps: action.userData.apps
-        }
+        userData: action.userData,
+        isAuthenticated: (action.userData.userId && action.userData.token) ? true : false
       }
     case ACTIONS.REFRESH:
-      return {
-        ...state,
-        user: {
-          userId: action.userData.userId,
-          displayName: action.userData.displayName,
-          title: action.userData.title,
-          department: action.userData.department,
-          isAuthenticated: (action.userData.userId && action.userData.token) ? true : false,
-          token: action.userData.token,
-          apps: action.userData.apps
+      if (action.userData) {
+        return {
+          ...state,
+            userData: action.userData,
+            isAuthenticated: (action.userData.userId && action.userData.token) ? true : false
         }
+      } else {
+
       }
+      break;
     case ACTIONS.SIGNOUT:
       return {
         ...state,
-        user: {
-          userId: action.userData.userId,
-          displayName: action.userData.displayName,
-          title: action.userData.title,
-          department: action.userData.department,
-          isAuthenticated: (action.userData.userId && action.userData.token) ? true : false,
-          token: action.userData.token,
-          apps: action.userData.apps
-        }
+          userData: action.userData,
+          isAuthenticated: (action.userData.userId && action.userData.token) ? true : false
       }
     default:
       return state
