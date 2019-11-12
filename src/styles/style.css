@@ -1,0 +1,28 @@
+.footerMessage {
+    background-color: #dddddd;
+    color: #1d1d1d;
+    text-align: center;
+}
+
+.navBar {
+    background-color: #00062a;
+    color: #ddfeff;
+}
+
+.title {
+    flex-grow: 1;
+}
+
+.loginButton {
+    background-color: #eeeeee;
+    color: #1d1d1d;
+}
+
+.loginButton:hover {
+    color: #eeeeee;
+    background-color: #1d1d1d;
+}
+
+.sessionButton {
+    color: #ffffff,
+}

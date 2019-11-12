@@ -7,9 +7,9 @@ import AccountBox from '@material-ui/icons/AccountBox';
 import MenuIcon from '@material-ui/icons/Menu';
 import { style } from '../../../styles/NavBar';
 import { Button, IconButton } from '@material-ui/core';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import UserSessionMenu from './UserSessionMenu';
+import { withRouter } from 'react-router-dom';
 
 class NavBar extends Component {
 
@@ -27,13 +27,11 @@ class NavBar extends Component {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            {"Aplicaciones TRUPER"}
+            {"Aplicaciones"}
           </Typography>
           {!isAuthenticated ?
-            <Button
-              className={classes.loginButton}
-              onClick={this.redirectToLogin}
-            >
+            <Button className={classes.loginButton}
+              onClick={this.redirectToLogin}>
               <AccountBox />
               {"Iniciar sesión"}
             </Button> :
@@ -50,6 +48,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.authenticate.isAuthenticated,
 });
 
-const connectedNavBar = connect(mapStateToProps, null)(NavBar);
-
-export default withRouter(withStyles(style)(connectedNavBar))
+export default withRouter(withStyles(style)(connect(mapStateToProps, null)(NavBar)));

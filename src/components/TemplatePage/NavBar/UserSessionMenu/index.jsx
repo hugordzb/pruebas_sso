@@ -1,16 +1,12 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
-
 import Fade from '@material-ui/core/Fade';
 import { IconButton, Card, CardContent, Typography, 
   Avatar, CardActions, Button, Popover } from '@material-ui/core';
-
 import { connect } from 'react-redux';
 import { signOut } from '../../../../redux/actions';
-import { style } from '../../../../styles/UserSessionMenu';
-
 
 class UserSessionMenu extends Component {
+  
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +29,6 @@ class UserSessionMenu extends Component {
   render() {
     const open = Boolean(this.state.anchorEl);
     const id = open ? "user-session-menu" : undefined;
-    const { classes } = this.props;
     return (
       <div>
         <IconButton variant="contained" onClick={this.handleClick}>
@@ -52,8 +47,7 @@ class UserSessionMenu extends Component {
             vertical: 'top',
             horizontal: 'center',
           }}
-          TransitionComponent={Fade}
-        >
+          TransitionComponent={Fade}>
           <Card>
             <CardContent>
               <Typography variant="h5" component="h2">
@@ -80,6 +74,4 @@ const mapDispatchToProps = dispatch => ({
   signOut: () => dispatch(signOut())
 })
 
-const connectedUserSessionMenu = connect(null, mapDispatchToProps)(UserSessionMenu);
-
-export default withStyles(style)(connectedUserSessionMenu)
+export default connect(null, mapDispatchToProps)(UserSessionMenu);

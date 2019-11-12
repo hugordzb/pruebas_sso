@@ -16,11 +16,10 @@ class Home extends React.Component {
           Bienvenido {userData.userId}
         </Typography>
         {
-          userData.apps.length > 0 ?
-            <SystemMenu apps={userData.apps}></SystemMenu> :
+          userData.apps.length > 0 ? 
+            <SystemMenu apps={userData.apps}></SystemMenu> : 
             <Typography variant="h6">No se tienen sistemas registrados en esta cuenta</Typography>
         }
-
       </TemplatePage >
     )
   }

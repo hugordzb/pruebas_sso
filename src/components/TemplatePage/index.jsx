@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles, CssBaseline } from '@material-ui/core'
-
 import NavBar from './NavBar';
 import Footer from './Footer';
-
 import { style } from '../../styles/TemplatePage'
 
 class TemplatePage extends Component {
@@ -12,7 +10,7 @@ class TemplatePage extends Component {
     const { children } = this.props;
     const { classes } = this.props;
     return (
-      <>
+      <div>
         <CssBaseline />
         <header className={classes.header}>
           <NavBar />
@@ -25,7 +23,7 @@ class TemplatePage extends Component {
         <footer className={classes.footer}>
           <Footer />
         </footer>
-      </>
+      </div>
     );
   }
 }
