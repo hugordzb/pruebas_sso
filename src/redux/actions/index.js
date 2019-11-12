@@ -6,6 +6,7 @@ const ACTIONS = {
 
 export const authenticate = userData => {
   localStorage.setItem("userId", userData.userId);
+  localStorage.setItem("displayName", JSON.stringify(userData.displayName));
   localStorage.setItem("token", userData.token);
   localStorage.setItem("apps", JSON.stringify(userData.apps));
 
@@ -18,6 +19,7 @@ export const authenticate = userData => {
 export const refresh = () => {
   var userData = {
     userId: localStorage.getItem("userId"),
+    displayName: localStorage.getItem("displayName"),
     token: localStorage.getItem("token"),
     apps: JSON.parse(localStorage.getItem("apps"))
   }
@@ -34,6 +36,7 @@ export const signOut = () => {
   
   var userData = {
     userId: "",
+    displayName: "",
     token: "",
     apps: []
   }

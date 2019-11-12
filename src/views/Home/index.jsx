@@ -15,10 +15,9 @@ class Home extends React.Component {
           Bienvenido {this.props.userId}
         </Typography>
         {
-          this.props.apps.length > 0 ? <SystemMenu apps={this.props.apps}></SystemMenu> :
-            <Typography variant="h6">
-              No se tienen sistemas registrados en esta cuenta
-        </Typography>
+          this.props.apps.length > 0 ?
+            <SystemMenu apps={this.props.apps}></SystemMenu> :
+            <Typography variant="h6">No se tienen sistemas registrados en esta cuenta</Typography>
         }
 
       </TemplatePage >

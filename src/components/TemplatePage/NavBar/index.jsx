@@ -36,7 +36,7 @@ class NavBar extends Component {
               <AccountBox />
               {"Iniciar sesión"}
             </Button> :
-            <UserSessionMenu userId={this.props.userId}/>
+            <UserSessionMenu userId={this.props.displayName.replace(/"/g, "")}/>
           }
         </Toolbar>
       </AppBar>
@@ -45,7 +45,7 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  userId: state.authenticate.user.userId,
+  displayName: state.authenticate.user.displayName,
   isAuthenticated: state.authenticate.user.isAuthenticated,
 });
 

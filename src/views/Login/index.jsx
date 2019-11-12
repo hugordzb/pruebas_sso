@@ -61,6 +61,7 @@ class Login extends Component {
   render() {
     const { classes } = this.props;
     return (
+      <div className={classes.root}>
       <Container component="main" maxWidth="xs">
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -117,6 +118,7 @@ class Login extends Component {
           </form>
         </div>
       </Container>
+      </div>
     );
   }
 }
