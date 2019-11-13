@@ -5,7 +5,7 @@ const style = theme => ({
     //backgroundImage: `url(${Image})`,
     width: "100%",
     height: "100vh",
-    //color: "#ffffff"
+    color: "#ffffff"
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -22,8 +22,32 @@ const style = theme => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: "0 auto",
+    backgroundColor:"transparent",
+    borderColor: "#3f9dd5",
+    borderRadius: "30px",
+    border: "2px solid",
+    '&:hover':{
+      backgroundColor:"#3f9dd5"
+    }
   },
+  blueText:{
+    color:"#3f9dd5"
+  },
+  inputTruper:{
+    backgroundColor:"#ffffff",
+    border: "0 !important",
+    borderRadius: "30px",
+  },
+  checkboxTruper:{
+    borderColor:"white"
+  },
+  mtb2:{
+    margin: "0px 0px 15px"
+  },
+  containerLogin:{
+    marginRight:"5%",
+  }
 });
 
 export {

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import {
   Avatar, Button, Checkbox, Container,
   FormControlLabel, TextField, CircularProgress,
-  Typography, withStyles
+  Typography, withStyles, Grid
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
@@ -48,54 +48,72 @@ class Login extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Container component="main" maxWidth="xs">
-          <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-              {"Iniciar sesión"}
-            </Typography>
-            <form className={classes.form}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="userId"
-                label="Usuario"
-                name="userId"
-                autoFocus
-                value={this.state.userId}
-                onChange={this.hangleChangeUserId}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Contraseña"
-                type="password"
-                id="password"
-                value={this.state.password}
-                onChange={this.hangleChangePassword}
-              />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Recuérdame"
-              />
-              {!this.state.isLoading ?
-                <Button fullWidth variant="contained" color="primary"
-                  className={classes.submit} onClick={this.handleSubmit} >
-                  {"Iniciar sesión"}
-                </Button>
-                :
-                <CircularProgress />
-              }
-            </form>
-          </div>
-        </Container>
+         <Grid container direction="row"
+            justify="flex-end"
+            alignItems="center"
+            spacing={3}
+           >
+            <Grid item xs="6" sm="3" className={classes.containerLogin}> 
+              {/*<Container component="main" maxWidth="xs">*/}
+                <div className={classes.paper}>
+                  <h1>
+                    Bienvenido a
+                  </h1>
+                  <h1>
+                    <span className={classes.blueText}>Single</span>SignOn
+                  </h1>
+                  {/*<Avatar className={classes.avatar}>
+                    <LockOutlinedIcon />
+                  </Avatar>
+                  <Typography component="h1" variant="h5">
+                    {"Iniciar sesión"}
+                  </Typography>*/}
+                    <form className={classes.form}>
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="userId"
+                        placeholder="Usuario"
+                        name="userId"
+                        autoFocus
+                        value={this.state.userId}
+                        onChange={this.hangleChangeUserId}
+                        className={classes.inputTruper}
+                      />
+                      <TextField
+                        variant="outlined"
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        placeholder="Contraseña"
+                        type="password"
+                        id="password"
+                        value={this.state.password}
+                        onChange={this.hangleChangePassword}
+                        className={classes.inputTruper}
+                      />
+                      <div className={classes.mtb2}>
+                      <FormControlLabel
+                        control={<Checkbox value="remember" color="primary" className={classes.checkboxTruper} />}
+                        label="Recuérdame"
+                      />
+                      </div>
+                      {!this.state.isLoading ?
+                        <Button fullWidth variant="contained" color="primary"
+                          className={classes.submit} onClick={this.handleSubmit} >
+                          {"Iniciar sesión"}
+                        </Button>
+                        :
+                        <CircularProgress />
+                      }
+                    </form>
+                </div>
+             {/* </Container>*/}
+            </Grid>
+          </Grid>
       </div>
     );
   }
