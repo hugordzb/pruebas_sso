@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Button } from '@material-ui/core';
 
 import { connect } from 'react-redux';
-import { classes } from 'istanbul-lib-coverage';
-import { style } from '../../../styles/System';
+import { style } from '../../../styles/System'
 import { withStyles } from '@material-ui/core';
 class System extends Component {
 
@@ -13,12 +12,13 @@ class System extends Component {
   }
 
   render() {
-    const { app } = this.props
-    
+    const { app, classes } = this.props;
     return (
-      <Button className={classes.system} onClick={this.redirectApp}>
-        {(app === "S004") ? "Recertificación" : app}
+      <Button variant="contained" color="primary"
+        className={classes.system} onClick={this.redirectApp}>
+        <h1 className={classes.systemTitle}>{(app === "S004") ? "Recertificación" : app}</h1>
       </Button>
+
     );
   }
 
@@ -29,6 +29,6 @@ const mapStateToProps = state => ({
   isAuthenticated: state.authenticate.isAuthenticated,
 });
 
-export const styledSystem = withStyles(style)(System);
+export const connectedSystem = connect(mapStateToProps, null)(System);
 
-export default connect(mapStateToProps, null)(styledSystem);
+export default withStyles(style)(connectedSystem);

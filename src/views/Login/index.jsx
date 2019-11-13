@@ -54,10 +54,10 @@ class Login extends Component {
         >
           <Grid item xs="6" sm="3" className={classes.containerLogin}>
             <div className={classes.paper}>
-              <h1>
+              <h1 className={classes.title}>
                 {"Bienvenido a"}
               </h1>
-              <h1>
+              <h1 className={classes.title}>
                 <span className={classes.blueText}>{"Single"}</span>{"SignOn"}
               </h1>
               <form className={classes.form}>

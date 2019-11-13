@@ -11,9 +11,10 @@ const style = theme => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+  title: {
+    fontSize: "3.6vw",
+    padding: "5% 1%",
+    margin: "0",
   },
   form: {
     width: '100%', // Fix IE 11 issue.
