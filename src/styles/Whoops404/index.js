@@ -1,14 +1,23 @@
 export const style = theme => ({
-  title: {
-    size: "2.5em",
-    color: "#770000",
+  blueText:{
+    color:"#3f9dd5"
   },
-  message: {
-    size: "2em",
-    color: "#770077",
+  message404: {
+    fontSize: "25vw",
+    textAlign: "center"
   },
-  media: {
-    fontSize: "8em",
-    color: "#770000",
+  submessage404: {
+    fontSize: "5vw",
+    textAlign: "center"
+  },
+  submit: {
+    margin: "0 auto",
+    backgroundColor:"transparent",
+    borderColor: "#3f9dd5",
+    borderRadius: "30px",
+    border: "2px solid",
+    '&:hover':{
+      backgroundColor:"#3f9dd5"
+    }
   },
 });
