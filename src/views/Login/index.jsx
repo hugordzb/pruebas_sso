@@ -53,20 +53,13 @@ class Login extends Component {
           spacing={3}
         >
           <Grid item xs="6" sm="3" className={classes.containerLogin}>
-            {/*<Container component="main" maxWidth="xs">*/}
             <div className={classes.paper}>
               <h1>
-                Bienvenido a
-                  </h1>
+                {"Bienvenido a"}
+              </h1>
               <h1>
-                <span className={classes.blueText}>Single</span>SignOn
-                  </h1>
-              {/*<Avatar className={classes.avatar}>
-                    <LockOutlinedIcon />
-                  </Avatar>
-                  <Typography component="h1" variant="h5">
-                    {"Iniciar sesión"}
-                  </Typography>*/}
+                <span className={classes.blueText}>{"Single"}</span>{"SignOn"}
+              </h1>
               <form className={classes.form}>
                 <TextField
                   variant="outlined"
@@ -110,7 +103,6 @@ class Login extends Component {
                 }
               </form>
             </div>
-            {/* </Container>*/}
           </Grid>
         </Grid>
       </div>

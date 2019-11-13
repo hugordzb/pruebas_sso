@@ -4,9 +4,11 @@ body {
     -moz-osx-font-smoothing: grayscale !important;
     overflow-x: hidden !important;
     background: url(../assets/img/fondo.png) no-repeat;
-    background-size: cover;
-    height: calc(100vh - (50px + 1em));
-
+    background-size: cover !important;
+    background-color: #192945 !important;
+    height: 100vh !important;
+    width: 100% !important;
+    color: #ffffff !important;
   }
 fieldset {
     border: 0px !important;
@@ -49,3 +51,5 @@ fieldset {
 .sessionButton {
     color: #ffffff,
 }
+
+

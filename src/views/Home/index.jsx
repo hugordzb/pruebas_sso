@@ -1,23 +1,29 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
-import SystemMenu from '../../components/SystemMenu'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import SystemMenu from '../../components/SystemMenu';
 
-import { connect } from 'react-redux'
-import TemplatePage from '../../components/TemplatePage'
-import { Typography } from '@material-ui/core'
+import { connect } from 'react-redux';
+import TemplatePage from '../../components/TemplatePage';
+import { Typography, withStyles } from '@material-ui/core';
+
+import { style } from '../../styles/Home';
 
 class Home extends React.Component {
   render() {
-    const { userData } = this.props;
+    const { userData, classes } = this.props;
     return (
       <TemplatePage>
-        <Typography variant="h5">
-          Bienvenido {userData.userId}
-        </Typography>
+        <h1>
+          {"Bienvenido a"}
+        </h1>
+        <h1>
+          <span className={classes.blueText}>{"Single"}</span>{"SignOn"}
+        </h1>
+        <p>Todo lo que necesitas en un solo lugar</p>
         {
-          userData.apps.length > 0 ? 
-            <SystemMenu apps={userData.apps}></SystemMenu> : 
+          userData.apps.length > 0 ?
+            <SystemMenu apps={userData.apps}></SystemMenu> :
             <Typography variant="h6">No se tienen sistemas registrados en esta cuenta</Typography>
         }
       </TemplatePage >
@@ -36,4 +42,6 @@ const mapStateToProps = state => ({
 
 const HomeConnected = connect(mapStateToProps, null)(Home);
 
-export default withRouter(HomeConnected)
+const styledConnectedHome = withStyles(style)(HomeConnected);
+
+export default withRouter(styledConnectedHome)

@@ -6,11 +6,6 @@ export const style = theme => ({
   },
   main: {
     margin: theme.spacing(1),
-    padding: theme.spacing(1),
-    height: "100vh",
-  },
-  footer:{
-    margin: theme.spacing(0),
-    padding: theme.spacing(0),
+    padding: theme.spacing(16),
   }
 })

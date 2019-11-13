@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Button } from '@material-ui/core';
 
 import { connect } from 'react-redux';
-
+import { classes } from 'istanbul-lib-coverage';
+import { style } from '../../../styles/System';
+import { withStyles } from '@material-ui/core';
 class System extends Component {
 
   redirectApp = () => {
@@ -14,7 +16,7 @@ class System extends Component {
     const { app } = this.props
     
     return (
-      <Button onClick={this.redirectApp}>
+      <Button className={classes.system} onClick={this.redirectApp}>
         {(app === "S004") ? "Recertificación" : app}
       </Button>
     );
@@ -27,4 +29,6 @@ const mapStateToProps = state => ({
   isAuthenticated: state.authenticate.isAuthenticated,
 });
 
-export default connect(mapStateToProps, null)(System);
+export const styledSystem = withStyles(style)(System);
+
+export default connect(mapStateToProps, null)(styledSystem);

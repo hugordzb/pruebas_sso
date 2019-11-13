@@ -2,10 +2,8 @@ const style = theme => ({
   root: {
     margin: "0",
     padding: "0",
-    //backgroundImage: `url(${Image})`,
     width: "100%",
-    height: "100vh",
-    color: "#ffffff"
+    height: "100vh"
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -46,7 +44,7 @@ const style = theme => ({
     margin: "0px 0px 15px"
   },
   containerLogin:{
-    marginRight:"5%",
+    marginRight:"10%",
   }
 });
 
