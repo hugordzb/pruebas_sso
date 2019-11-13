@@ -4,6 +4,9 @@ import { IconButton, Card, CardContent, Typography,
   Avatar, CardActions, Button, Popover } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { signOut } from '../../../../redux/actions';
+import { withStyles } from "@material-ui/styles";
+
+import { style } from '../../../../styles/UserSessionMenu'
 
 class UserSessionMenu extends Component {
   
@@ -27,12 +30,13 @@ class UserSessionMenu extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     const open = Boolean(this.state.anchorEl);
     const id = open ? "user-session-menu" : undefined;
     return (
       <div>
         <IconButton variant="contained" onClick={this.handleClick}>
-          <Avatar>{this.props.userData.displayName.charAt(0)}</Avatar>
+          <Avatar className={classes.sessionAvatar}>{this.props.userData.displayName.charAt(0)}</Avatar>
         </IconButton>
         <Popover
           id={id}
@@ -74,4 +78,6 @@ const mapDispatchToProps = dispatch => ({
   signOut: () => dispatch(signOut())
 })
 
-export default connect(null, mapDispatchToProps)(UserSessionMenu);
+const connectedUserSessionMenu = connect(null, mapDispatchToProps)(UserSessionMenu);
+
+export default withStyles(style)(connectedUserSessionMenu);

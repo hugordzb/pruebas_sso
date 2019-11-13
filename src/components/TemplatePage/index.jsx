@@ -6,8 +6,7 @@ import { style } from '../../styles/TemplatePage'
 class TemplatePage extends Component {
   
   render() {
-    const { children } = this.props;
-    const { classes } = this.props;
+    const { children, classes } = this.props;
     return (
       <div>
         <CssBaseline />

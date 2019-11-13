@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
   Button, Checkbox,
-  FormControlLabel, TextField, CircularProgress,
+  FormControlLabel, TextField, LinearProgress,
   withStyles, Grid
 } from '@material-ui/core';
 
@@ -99,7 +99,7 @@ class Login extends Component {
                     {"Iniciar sesión"}
                   </Button>
                   :
-                  <CircularProgress />
+                  <LinearProgress />
                 }
               </form>
             </div>

@@ -5,7 +5,7 @@ import SystemMenu from '../../components/SystemMenu';
 
 import { connect } from 'react-redux';
 import TemplatePage from '../../components/TemplatePage';
-import { Typography, withStyles } from '@material-ui/core';
+import { withStyles, Grid } from '@material-ui/core';
 
 import { style } from '../../styles/Home';
 
@@ -14,18 +14,27 @@ class Home extends React.Component {
     const { userData, classes } = this.props;
     return (
       <TemplatePage>
-        <h1>
-          {"Bienvenido a"}
-        </h1>
-        <h1>
-          <span className={classes.blueText}>{"Single"}</span>{"SignOn"}
-        </h1>
-        <p>Todo lo que necesitas en un solo lugar</p>
-        {
-          userData.apps.length > 0 ?
-            <SystemMenu apps={userData.apps}></SystemMenu> :
-            <Typography variant="h6">No se tienen sistemas registrados en esta cuenta</Typography>
-        }
+        <Grid container
+          direction="column"
+          justify="center"
+          alignItems="flex-start" className={classes.root}>
+
+          <h1 className={classes.title}>
+            {"Bienvenido a"}
+          </h1>
+          <h1 className={classes.title}>
+            <span className={classes.blueText}>{"Single"}</span>{"SignOn"}
+          </h1>
+
+
+
+          <p className={classes.greetingMessage}>Todo lo que necesitas en un solo lugar.</p>
+          {
+            userData.apps.length > 0 ?
+              <SystemMenu apps={userData.apps}></SystemMenu> :
+              <p className={classes.greetingMessage}>No se tienen sistemas registrados en esta cuenta.</p>
+          }
+        </Grid>
       </TemplatePage >
     )
   }
