@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 class System extends Component {
 
   redirectApp = () => {
-    let page = 'http://localhost:3001';
+    let page = 'http://localhost:3001/recertification';
     window.open(`${page}?token=${this.props.userData.token}`, '_blank');
   }
 

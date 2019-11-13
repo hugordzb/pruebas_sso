@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import TemplatePage from '../../components/TemplatePage';
-import { Typography } from '@material-ui/core';
 import Login from '../Login/index';
 
 class Greeting extends Component {
