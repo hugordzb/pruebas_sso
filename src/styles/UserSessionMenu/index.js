@@ -1,6 +1,6 @@
 export const style = theme => ({
   sessionAvatar: {
-    backgroundColor: "transparent",
+    backgroundColor: "#3f9dd5",
     color: "#ffffff",
     "&:hover": {
       backgroundColor: "#ffffff",

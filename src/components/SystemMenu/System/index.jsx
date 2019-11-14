@@ -21,20 +21,32 @@ class System extends Component {
         alignItems="center"
         className={classes.system}
         xs={12} sm={6} md={4} lg={3} xl={2} >
+
         <Grid item container
           direction="row"
           justify="center"
           alignItems="flex-start"
         >
-          <img width="25%" className={classes.systemIcon} src={RecertificationIcon} alt="Recertification icon" />
-          <h1 className={classes.systemTitle}>{(app === "S001") ? "Recertificación" : app}</h1>
-          <p className={classes.systemDescription}>asdasdasdasdsadsada{app.description}</p>
+          <Grid item xs="3" sm="3">
+            <img width="100%" className={classes.systemIcon} src={RecertificationIcon} alt="Recertification icon" />
+          </Grid>
+          <Grid item container 
+          direction="column"
+          xs="9" sm="9">
+            <Grid item xs="12" sm="12">
+            <span className={classes.systemTitle}>{(app === "S001") ? "Recertificación" : app}</span>
+            </Grid>
+            <Grid item xs="12" sm="12">
+            <span className={classes.systemDescription}>asdasdasdasdsadsada{app.description}</span>
+            </Grid>
+          </Grid>
 
         </Grid>
 
+
         <Button variant="contained" color="primary"
           className={classes.systemButton} onClick={this.redirectApp}>
-          {"Ingresar"}
+         <small>{"Ingresar"}</small> 
         </Button>
       </Grid>
     );

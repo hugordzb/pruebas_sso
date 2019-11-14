@@ -9,13 +9,16 @@ body {
     height: 100vh !important;
     width: 100% !important;
     color: #ffffff !important;
-  }
+}
+
 fieldset {
     border: 0px !important;
 }
+
 .MuiCheckbox-colorPrimary.Mui-checked {
     color: #3f9dd5 !important;
 }
+
 .MuiOutlinedInput-input {
     padding: 10.5px 14px !important;
 }
@@ -23,6 +26,15 @@ fieldset {
 .MuiCheckbox-colorPrimary{
     color: #3f9dd5 !important;
 }
+
+.MuiPaper-elevation4{
+    box-shadow:none !important;
+}
+
+.MuiIconButton-root:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
 .footerMessage {
     background-color: #dddddd;
     color: #1d1d1d;

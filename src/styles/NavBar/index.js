@@ -3,7 +3,7 @@ export const style = theme => ({
   navBar: {
     backgroundColor:"transparent",
     color: '#ddfeff',
-    padding: "5% 5%",
+    padding: "2% 0%",
   },
   title: {
     flexGrow: 1,
