@@ -18,21 +18,22 @@ class Home extends React.Component {
           direction="column"
           justify="center"
           alignItems="flex-start" className={classes.root}>
+          <Grid item>
+            <span className={classes.title}>
+              {"Bienvenido a"}
+            </span>
+          </Grid>
+          <Grid item>
+            <span className={classes.title}><span className={classes.blueText}>{"Single"}</span>{"SignOn"}</span>
+          </Grid>
 
-          <h1 className={classes.title}>
-            {"Bienvenido a"}
-          </h1>
-          <h1 className={classes.title}>
-            <span className={classes.blueText}>{"Single"}</span>{"SignOn"}
-          </h1>
-
-
-
-          <p className={classes.greetingMessage}>Todo lo que necesitas en un solo lugar.</p>
+          <Grid item className={classes.greetingMessage}>
+            <span>Todo lo que necesitas en un solo lugar.</span>
+          </Grid>
           {
             userData.apps.length > 0 ?
               <SystemMenu apps={userData.apps}></SystemMenu> :
-              <p className={classes.greetingMessage}>No se tienen sistemas registrados en esta cuenta.</p>
+              <Grid item><span className={classes.greetingMessage}>No se tienen sistemas registrados en esta cuenta.</span></Grid>
           }
         </Grid>
       </TemplatePage >

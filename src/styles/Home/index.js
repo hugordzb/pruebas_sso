@@ -7,9 +7,11 @@ export const style = theme => ({
   },
   title: {
     margin: "0",
-    fontSize: "3.2vw"
+    fontSize: "36px"
   }, 
   greetingMessage: {
-    fontSize: "1.6vw"
+    fontSize: "18px",
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   }
 });

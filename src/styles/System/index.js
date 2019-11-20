@@ -28,7 +28,7 @@ export const style = theme => ({
     borderColor: "#3f9dd5",
     borderRadius: "30px",
     border: "2px solid",
-    fontSize: "1.1vw",
+    fontSize: "16px",
     fontWeight: '200',
     boxShadow:"none !important",
     textTransform: "capitalize",

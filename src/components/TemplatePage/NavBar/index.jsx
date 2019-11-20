@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import AccountBox from '@material-ui/icons/AccountBox';
 import { style } from '../../../styles/NavBar';
 import { Button, Grid } from '@material-ui/core';
@@ -22,14 +21,11 @@ class NavBar extends Component {
     return (
       <AppBar position="static" className={classes.navBar}>
         <Toolbar>
-          {/*<Typography variant="h6" className={classes.title}>
-            {"Aplicaciones"}
-    </Typography>*/}
           <Grid container direction="row"
             justify="flex-end"
             alignItems="center"
             spacing={3}>
-            <Grid xs="6" sm="1">
+            <Grid item>
               {!isAuthenticated ?
                 <Button className={classes.loginButton}
                   onClick={this.redirectToLogin}>
