@@ -1,3 +1,4 @@
+import { ACTIONS } from '../../actions';
 
 const initialState = () => {
   let state = {};
@@ -6,35 +7,25 @@ const initialState = () => {
   if (userJson) {
     let userData = JSON.parse(userJson);
     let isAuthenticated = (userData.userId && userData.token) ? true : false;
+    let isLoading = false;
     state = {
       userData,
-      isAuthenticated
+      isAuthenticated,
+      isLoading
     }
   }
-
   return state;
 }
 
 export const authentication = (state = initialState(), action) => {
   switch (action.type) {
-    case ACTIONS.AUTHENTICATE:
+    case ACTIONS.SIGNIN_SUCCESS:
       return {
         ...state,
         userData: action.userData,
         isAuthenticated: (action.userData.userId && action.userData.token) ? true : false
       }
-    case ACTIONS.REFRESH:
-      if (action.userData) {
-        return {
-          ...state,
-            userData: action.userData,
-            isAuthenticated: (action.userData.userId && action.userData.token) ? true : false
-        }
-      } else {
-
-      }
-      break;
-    case ACTIONS.SIGNOUT:
+    case ACTIONS.SIGNOUT_SUCCESS:
       return {
         ...state,
           userData: action.userData,

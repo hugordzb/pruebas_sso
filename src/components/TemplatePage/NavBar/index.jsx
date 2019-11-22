@@ -43,8 +43,8 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  userData: state.authenticate.userData,
-  isAuthenticated: state.authenticate.isAuthenticated,
+  userData: state.authentication.userData,
+  isAuthenticated: state.authentication.isAuthenticated,
 });
 
 export default withRouter(withStyles(style)(connect(mapStateToProps, null)(NavBar)));

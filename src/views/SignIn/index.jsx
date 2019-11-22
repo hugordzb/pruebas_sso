@@ -6,10 +6,8 @@ import {
   FormControlLabel, TextField, LinearProgress,
   withStyles, Grid
 } from '@material-ui/core';
-
-import { authenticate } from '../../redux/actions';
+import { signIn } from '../../redux/actions';
 import { style } from '../../styles/Login';
-import { SSOServices } from '../../services/SSOServices';
 
 class Login extends Component {
   constructor(props) {
@@ -30,21 +28,18 @@ class Login extends Component {
   }
 
   handleSubmit = () => {
-    this.setState({ isLoading: true });
+    this.setState({isLoading: true});
+    const { signIn } = this.props;
     const { userId, password } = this.state;
+    let credential = btoa(`${userId}:${password}`);
+    
+    signIn(credential);
 
-    new SSOServices(btoa(`${userId}:${password}`), true).login((response => {
-      this.props.authenticate(response.data);
-      this.setState({ isLoading: false });
-      this.props.history.push('/home');
-    }), (responseError => {
-      console.log(responseError);
-      this.setState({ isLoading: false });
-    }));
+    this.setState({isLoading: false});
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, isLoading } = this.props;
     return (
       <div className={classes.root}>
         <Grid container direction="row"
@@ -93,7 +88,7 @@ class Login extends Component {
                     label="Recuérdame"
                   />
                 </div>
-                {!this.state.isLoading ?
+                {!isLoading ?
                   <Button fullWidth variant="contained" color="primary"
                     className={classes.submit} onClick={this.handleSubmit} >
                     {"Iniciar sesión"}
@@ -110,10 +105,16 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.authentication.isAuthenticated,
+  isLoading: state.authentication.isLoading
+
+});
+
 const mapDispatchToProps = dispatch => ({
-  authenticate: userData => dispatch(authenticate(userData))
-})
+  signIn: credential => dispatch(signIn(credential))
+});
 
-const loginConnected = connect(null, mapDispatchToProps)(Login)
+const loginConnected = connect(mapStateToProps, mapDispatchToProps)(Login);
 
-export default withRouter(withStyles(style)(loginConnected))
+export default withRouter(withStyles(style)(loginConnected));

@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-
-import { authenticate } from './authenticate'
+import { authentication } from './authentication';
+import { loader } from './loader';
 
 export const reducers = combineReducers({
-  authenticate
+  authentication,
+  loader
 });

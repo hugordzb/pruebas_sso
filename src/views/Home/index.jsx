@@ -46,8 +46,8 @@ Home.prototypes = {
 }
 
 const mapStateToProps = state => ({
-  userData: state.authenticate.userData,
-  isAuthenticated: state.authenticate.isAuthenticated,
+  userData: state.authentication.userData,
+  isAuthenticated: state.authentication.isAuthenticated,
 });
 
 const HomeConnected = connect(mapStateToProps, null)(Home);

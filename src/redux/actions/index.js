@@ -1,37 +1,32 @@
+import { Services } from "../../services";
+
 export const ACTIONS = {
-  AUTHENTICATE_SUCCESS: "AUTHENTICATE_SUCCESS",
-  REFRESH_SUCCESS: "REFRESH_SUCCESS",
-  SIGNOUT_SUCCESS: "SIGNOUT_SUCCESS"
+  SIGNIN_SUCCESS: "SIGNIN_SUCCESS",
+  SIGNOUT_SUCCESS: "SIGNOUT_SUCCESS",
+  INIT_LOAD: "INIT_LOAD",
+  FINISH_LOAD: "FINISH_LOAD"
 }
 
-export const authenticate = userData => {
-  localStorage.setItem('userData', JSON.stringify(userData))
+export const signIn = credential => {
+  return dispatch => {
+    dispatch(initLoad(true));
+    new Services(credential).signIn((response => {
+      let userData = response.data;
+      localStorage.setItem('userData', JSON.stringify(userData))
+      dispatch(signInSuccess(userData));
+    }), (responseError => {
+      dispatch();
+    }));
+  }
 
+};
+
+const signInSuccess = userData => {
   return {
-    type: ACTIONS.AUTHENTICATE,
+    type: ACTIONS.SIGNIN_SUCCESS,
     userData
   }
 };
-
-const authenticateSuccess = userData => {
-  return {
-    type: ACTIONS.AUTHENTICATE_SUCCESS,
-    userData
-  }
-};
-
-export const refresh = () => {
-  let userData = {};
-  let userJson = localStorage.getItem("userData");
-  if (userJson) {
-    userData = JSON.parse(userJson);
-
-  }
-  return {
-    type: ACTIONS.REFRESH,
-    userData
-  }
-}
 
 export const signOut = () => {
   localStorage.clear();
@@ -46,8 +41,29 @@ export const signOut = () => {
     apps: []
   }
 
+  signOutSuccess(userData);
+
+}
+
+const signOutSuccess = userData => {
   return {
     type: ACTIONS.SIGNOUT,
     userData
   }
+}
+
+/************LOADER ACTIONS ***************/
+
+const initLoad () => {
+   return {
+    type: ACTIONS.INIT_LOAD
+  }
+}
+
+
+const finishLoad = (message) => {
+  return {
+   type: ACTIONS.INIT_LOAD,
+   isLoading
+ }
 }

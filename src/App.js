@@ -2,22 +2,14 @@ import React from 'react';
 import Home from './views/Home';
 import { Switch, Route } from "react-router-dom";
 import Greeting from './views/Greeting';
-import Login from './views/Login';
+import Login from './views/SignIn';
 import Whoops404 from './views/Whoops404';
 import PrivateRoute from './components/PrivateRoute';
 import { connect } from 'react-redux';
-import { refresh } from './redux/actions/';
 import PublicRoute from './components/PublicRoute';
 
 class App extends React.Component {
-
-  componentDidMount() {
-    let { isAuthenticated } = this.props;
-    if (!isAuthenticated) {
-      this.props.refresh();
-    }
-  }
-
+  
   render() {
     return (
       <Switch>
@@ -31,12 +23,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  userData: state.authenticate.userData,
-  isAuthenticated: state.authenticate.isAuthenticated,
+  userData: state.authentication.userData,
+  isAuthenticated: state.authentication.isAuthenticated,
 });
 
-const mapDispatchToProps = dispatch => ({
-  refresh: () => dispatch(refresh())
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);
