@@ -1,8 +1,3 @@
-const ACTIONS = {
-  AUTHENTICATE: "AUTHENTICATE",
-  REFRESH: "REFRESH",
-  SIGNOUT: "SIGNOUT"
-}
 
 const initialState = () => {
   let state = {};
@@ -20,7 +15,7 @@ const initialState = () => {
   return state;
 }
 
-export const authenticate = (state = initialState(), action) => {
+export const authentication = (state = initialState(), action) => {
   switch (action.type) {
     case ACTIONS.AUTHENTICATE:
       return {

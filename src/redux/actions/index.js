@@ -1,7 +1,7 @@
 export const ACTIONS = {
-  AUTHENTICATE: "AUTHENTICATE",
-  REFRESH: "REFRESH",
-  SIGNOUT: "SIGNOUT"
+  AUTHENTICATE_SUCCESS: "AUTHENTICATE_SUCCESS",
+  REFRESH_SUCCESS: "REFRESH_SUCCESS",
+  SIGNOUT_SUCCESS: "SIGNOUT_SUCCESS"
 }
 
 export const authenticate = userData => {
@@ -9,6 +9,13 @@ export const authenticate = userData => {
 
   return {
     type: ACTIONS.AUTHENTICATE,
+    userData
+  }
+};
+
+const authenticateSuccess = userData => {
+  return {
+    type: ACTIONS.AUTHENTICATE_SUCCESS,
     userData
   }
 };
