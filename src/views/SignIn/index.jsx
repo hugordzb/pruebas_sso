@@ -28,14 +28,10 @@ class Login extends Component {
   }
 
   handleSubmit = () => {
-    this.setState({isLoading: true});
     const { signIn } = this.props;
     const { userId, password } = this.state;
     let credential = btoa(`${userId}:${password}`);
-    
     signIn(credential);
-
-    this.setState({isLoading: false});
   }
 
   render() {

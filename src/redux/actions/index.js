@@ -30,25 +30,26 @@ const signInSuccess = userData => {
 };
 
 export const signOut = () => {
-  localStorage.clear();
+  return dispatch => {
+    localStorage.clear();
 
-  var userData = {
-    userId: "",
-    token: "",
-    department: "",
-    name: "",
-    displayName: "",
-    title: "",
-    apps: []
+    var userData = {
+      userId: "",
+      token: "",
+      department: "",
+      name: "",
+      displayName: "",
+      title: "",
+      apps: []
+    }
+
+    dispatch(signOutSuccess(userData));
   }
-
-  signOutSuccess(userData);
-
 }
 
 const signOutSuccess = userData => {
   return {
-    type: ACTIONS.SIGNOUT,
+    type: ACTIONS.SIGNOUT_SUCCESS,
     userData
   }
 }
@@ -56,7 +57,7 @@ const signOutSuccess = userData => {
 /************LOADER ACTIONS ***************/
 
 const initLoad = () => {
-   return {
+  return {
     type: ACTIONS.INIT_LOAD
   }
 }
@@ -64,7 +65,7 @@ const initLoad = () => {
 
 const finishLoad = message => {
   return {
-   type: ACTIONS.FINISH_LOAD,
-   message
- }
+    type: ACTIONS.FINISH_LOAD,
+    message
+  }
 }

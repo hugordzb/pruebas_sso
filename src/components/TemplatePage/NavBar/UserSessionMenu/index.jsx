@@ -18,7 +18,8 @@ class UserSessionMenu extends Component {
   }
 
   handleSignOut = () => {
-    this.props.signOut();
+    const { signOut } = this.props;
+    signOut();
   }
 
   handleClick = event => {
