@@ -45,14 +45,14 @@ const request = {
 }
 
 const API = {
-  request: (tokenBasic, credential, contentType = 'application/json') => {
+  request: (tokenBearer, credential, contentType = 'application/json') => {
     var getConfig = (method, body = null, isJson = false) => {
       if(body === null){
         if(credential){
           return {
             headers: {
               'Content-Type': contentType,
-              'credential': tokenBasic
+              'credential': tokenBearer
             },
             method: method
           };
@@ -60,7 +60,7 @@ const API = {
           return {
             headers: {
               'Content-Type': contentType,
-              'Authorization': `Bearer ${tokenBasic}`
+              'Authorization': `Bearer ${tokenBearer}`
             },
             method: method
           };
@@ -70,7 +70,7 @@ const API = {
           return {
             headers: {
               'Content-Type': contentType,
-              'credential': tokenBasic
+              'credential': tokenBearer
             },
             method: method
           };
@@ -78,7 +78,7 @@ const API = {
           return {
             headers: {
               'Content-Type': contentType,
-              'Authorization': `Basic ${tokenBasic}`
+              'Authorization': `Basic ${tokenBearer}`
             },
             method: method,
             body: (isJson ? JSON.stringify(body) : body )
