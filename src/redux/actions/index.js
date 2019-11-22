@@ -9,13 +9,14 @@ export const ACTIONS = {
 
 export const signIn = credential => {
   return dispatch => {
-    dispatch(initLoad(true));
+    dispatch(initLoad());
     new Services(credential).signIn((response => {
       let userData = response.data;
       localStorage.setItem('userData', JSON.stringify(userData))
+      dispatch(finishLoad("Inicio de sesión de manera correcta"));
       dispatch(signInSuccess(userData));
     }), (responseError => {
-      dispatch();
+      dispatch(finishLoad("Hubo un error en la carga"));
     }));
   }
 
@@ -54,16 +55,16 @@ const signOutSuccess = userData => {
 
 /************LOADER ACTIONS ***************/
 
-const initLoad () => {
+const initLoad = () => {
    return {
     type: ACTIONS.INIT_LOAD
   }
 }
 
 
-const finishLoad = (message) => {
+const finishLoad = message => {
   return {
-   type: ACTIONS.INIT_LOAD,
-   isLoading
+   type: ACTIONS.FINISH_LOAD,
+   message
  }
 }
