@@ -16,6 +16,7 @@ export const signIn = credential => {
       dispatch(signInSuccess(userData));
       dispatch(finishLoad("Inicio de sesión de manera correcta"));
     }), (responseError => {
+      alert(responseError.error.message);
       dispatch(finishLoad(responseError.error.message));
     }));
   }
