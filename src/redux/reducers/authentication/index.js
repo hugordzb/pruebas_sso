@@ -7,11 +7,9 @@ const initialState = () => {
   if (userJson) {
     let userData = JSON.parse(userJson);
     let isAuthenticated = (userData.userId && userData.token) ? true : false;
-    let isLoading = false;
     state = {
       userData,
-      isAuthenticated,
-      isLoading
+      isAuthenticated
     }
   }
   return state;

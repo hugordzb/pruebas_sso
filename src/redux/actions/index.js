@@ -12,11 +12,11 @@ export const signIn = credential => {
     dispatch(initLoad());
     new Services(credential).signIn((response => {
       let userData = response.data;
-      localStorage.setItem('userData', JSON.stringify(userData))
-      dispatch(finishLoad("Inicio de sesión de manera correcta"));
+      localStorage.setItem('userData', JSON.stringify(userData));
       dispatch(signInSuccess(userData));
+      dispatch(finishLoad("Inicio de sesión de manera correcta"));
     }), (responseError => {
-      dispatch(finishLoad("Hubo un error en la carga"));
+      dispatch(finishLoad(responseError.error.message));
     }));
   }
 
@@ -42,7 +42,6 @@ export const signOut = () => {
       title: "",
       apps: []
     }
-
     dispatch(signOutSuccess(userData));
   }
 }
