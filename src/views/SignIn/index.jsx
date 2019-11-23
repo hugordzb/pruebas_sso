@@ -38,6 +38,17 @@ class Login extends Component {
   handleSubmit = () => {
     const { signIn } = this.props;
     const { userId, password } = this.state;
+
+    if(userId === undefined || userId === "" || userId.trim() === ""){
+      alert('Introduce un usuario');
+      return;
+    }
+
+    if(password === undefined || password === "" || password.trim() === ""){
+      alert('Introduce una contraseña válida');
+      return;
+    }
+
     let credential = btoa(`${userId}:${password}`);
     signIn(credential);
   }
