@@ -14,7 +14,6 @@ class Login extends Component {
     super(props);
     this.state = {
       userId: "",
-      isLoading: false,
       password: "",
     };
   }
@@ -28,6 +27,9 @@ class Login extends Component {
   }
 
   handleKeyDownPassword = event => {
+    if(this.props.isLoading)
+      return;
+
     if (event.key === 'Enter') {
       this.handleSubmit();
     }
