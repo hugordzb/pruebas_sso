@@ -8,8 +8,7 @@ import RecertificationIcon from '../../../assets/img/recertificacion.svg';
 class System extends Component {
 
   redirectApp = () => {
-    let page = 'http://localhost:3001/recertification';
-    window.open(`${page}?token=${this.props.userData.token}`, '_blank');
+    window.open(`${this.props.app.url}?token=${this.props.userData.token}&sistema=${this.props.app.app}&idPerfil=${this.props.app.perfil}`, '_blank');
   }
 
   render() {
@@ -34,10 +33,7 @@ class System extends Component {
           direction="column"
           xs={9} sm={9}>
             <Grid item xs={12} sm={12}>
-            <span className={classes.systemTitle}>{(app === "S001") ? "Recertificación" : app}</span>
-            </Grid>
-            <Grid item xs={12} sm={12}>
-            <span className={classes.systemDescription}>Descripción{app.description}</span>
+            <span className={classes.systemTitle}>{(app.app === "S001") ? "Recertificación" : app.app}</span>
             </Grid>
           </Grid>
 
